@@ -16,6 +16,9 @@ defmodule UUID do
 
   @urn "urn:uuid:" # UUID URN prefix.
 
+  @compile_time_if_addrs :inet.getifaddrs() #todo: if ever on a build server to package release big problem.
+
+
   @doc """
   Inspect a UUID and return information about its 128-bit binary content, type,
   version and variant.
@@ -445,7 +448,7 @@ defmodule UUID do
 
   # Get local IEEE 802 (MAC) address, or a random node id if it can't be found.
   defp uuid1_node() do
-    {:ok, ifs0} = :inet.getifaddrs()
+    {:ok, ifs0} = @compile_time_if_addrs #@if_addrs
     uuid1_node(ifs0)
   end
 
@@ -546,5 +549,7 @@ defmodule UUID do
   defp to_int(c) when ?a <= c and c <= ?f do
     c - ?a + 10
   end
+
+
 
 end
