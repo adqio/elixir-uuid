@@ -1,7 +1,7 @@
 defmodule UUID.Mixfile do
   use Mix.Project
 
-  @version "1.1.4"
+  @version "1.1.7"
 
   def project do
     [app: :uuid,
@@ -12,9 +12,9 @@ defmodule UUID.Mixfile do
             main: "readme",
             source_ref: "v#{@version}"],
      source_url: "https://github.com/zyro/elixir-uuid",
-     description: description,
-     package: package,
-     deps: deps]
+     description: description(),
+     package: package(),
+     deps: deps()]
   end
 
   # Application configuration.
@@ -24,8 +24,8 @@ defmodule UUID.Mixfile do
 
   # List of dependencies.
   defp deps do
-    [{:ex_doc, "~> 0.11", only: :dev},
-     {:earmark, "~> 0.2", only: :dev},
+    [{:ex_doc, "~> 0.15", only: :dev},
+     {:earmark, "~> 1.2", only: :dev},
      {:benchfella, "~> 0.3", only: :dev}]
   end
 
